@@ -47,6 +47,7 @@ OUTPUT
 
  Three lookup tables are needed to run the code. These can be downloaded along with an example dataset 
  from the following data repositry:  10.6084/m9.figshare.22777184
+ 
  All the lookup tables are setup for the AisaFENIX spectrometer run in binning mode to
  that outputs 451 bands from 380-2500 nm. If a different instrument of
  spectral resolution is used then these look up tables (except scaled band
