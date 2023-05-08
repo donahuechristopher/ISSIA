@@ -1,0 +1,113 @@
+function [CR] = continuum_removed(v,varargin)
+
+%%  ====================== Optional inputs =============================
+%
+%  Sampling (double):   sampling vector (the same length as "v")
+%                If none is provided, it is assumed that the points are 
+%                sampled uniformly
+%               
+%  'Plots'   :   {'yes', 'no'}; Default: 'no'
+%                Activates plots if set to 'yes'
+%
+%%  =========================== Outputs ==================================
+%
+%  CR  :  Continuum removed spectrum (contains values between 0 and 1)
+%
+%
+%%  ======================================================================
+%  Author: M.-D. Iordache, 2016
+%
+%%  ======================================================================
+%
+%  Copyright (April 14, 2016):  
+%  Marian-Daniel Iordache (marian-daniel.iordache@vito.be)
+%
+% This code is distributed under the terms of
+% the GNU General Public License 2.0. 
+%
+% Permission to use, copy, modify, and distribute this software for
+% any purpose without fee is hereby granted, provided that the author 
+% and the download link are acknowledged.
+% This software is being provided "as is", without any express or
+% implied warranty. In particular, the author does not make any
+% representation or warranty of any kind concerning the merchantability
+% of this software or its fitness for any particular purpose.
+%%  ======================================================================
+
+%=========================== Compute continuum removed ================
+
+if (nargin-length(varargin)) > 1
+    if mod(length(varargin),2) ~= 0
+        error('Wrong number of required parameters');
+    end
+end
+
+% Vector size
+L = length(v);
+
+if L<2
+    error('The input vector should contain at least two values! Code terminated!');
+end
+
+%--------------------------------------------------------------
+% Constants and initializations
+%--------------------------------------------------------------
+small = 10*eps;
+x = 1:L;
+x_ext = 1:L+2;
+Plots = 'no';
+
+%--------------------------------------------------------------
+% Read the optional parameters
+%--------------------------------------------------------------
+if (rem(length(varargin),2)~=0)
+    error('Optional parameters should always go by pairs');
+else
+    for i=1:2:(length(varargin)-1)
+        switch upper(varargin{i})
+            case 'SAMPLING'
+                x = varargin{i+1};
+                x_ext = [x(1)-small x x(end)+small];
+            case 'PLOTS'
+                Plots = varargin{i+1};
+            otherwise
+                % The option is not valid
+                error(['Unrecognized option: ''' varargin{i} '''']);
+        end;
+    end;
+end
+
+%%% Extend vector of observations    
+    %v_ext = [0 v small 0]';
+    v_ext = [0 v 0]';
+    %%% Compute convex hull    
+    K = convhull(x_ext',v_ext);
+    K(1:2) = [];
+    K(end) = [];
+    K = sort(K,'ascend');
+    K = K-1;
+    if length(K)<2 || max(K)>length(v)
+        CR=nan(length(v),1);
+    else
+
+%%% Compute resampled spectrum
+    resampled_spectrum = interp1(x(K),v(K),x,'linear');   
+    CR = v./resampled_spectrum;
+    end
+
+%%% If plots are activated, visualize figures    
+    if strcmp(Plots,'yes')
+        figure
+        plot(x,v,'LineWidth',2)
+        hold on
+        plot(x,resampled_spectrum,'r','LineWidth',2)
+        title('Original spectrum vs. convex hull')
+        legend('Original spectrum','Top of convex hull')
+
+        figure
+        plot(x,CR,'LineWidth',2)
+        title('Continuum removed spectrum')
+    end   
+end
+    
+    
