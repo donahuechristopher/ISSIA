@@ -45,7 +45,7 @@ OUTPUT
  subset for each output. Spatial subsetting was required anyways since the file 
  sizes where too large to proceess all at once. 
 
- Three lookup tables are needed to run the code. These can be downloaded along with an example dataset 
+ Three lookup tables are needed to run the code. These can be downloaded
  from the following data repositry:  10.6084/m9.figshare.22777184
  
  All the lookup tables are setup for the AisaFENIX spectrometer run in binning mode to
@@ -75,3 +75,5 @@ OUTPUT
 
 For reference a single Place Glacier flight line at 1 m spatial resolution
 takes about 40 minutes on personal laptop
+
+An example ACO dataset over Place Glacier is available for download here: 10.6084/m9.figshare.22777184
