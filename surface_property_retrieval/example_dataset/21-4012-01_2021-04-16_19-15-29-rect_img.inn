@@ -1,0 +1,36 @@
+16-04-2021          Date (dd-mm-year) 
+ 100.0              Scale factor reflectance
+   1.00             Pixel size [m]          
+FENIX_2021, FENIX_2021,
+     1.00000        gainset,  c1 = c1(calfile) / gainset
+U:\2021_Acquisitions\02_Processed\21_4012_03_Place_CryoMB\03_Hyper\02_Working\OUTPUT\21-4012-01_2021-04-16_19-15-29-rect_rad.cal
+U:\2021_Acquisitions\02_Processed\21_4012_03_Place_CryoMB\03_Hyper\02_Working\OUTPUT\21-4012-01_2021-04-16_19-15-29-rect_sca.bsq
+0.9900  0           iemiss, dem_unit  (0=[m], 1=[dm], 2=[cm])
+U:\2021_Acquisitions\02_Processed\21_4012_03_Place_CryoMB\03_Hyper\02_Working\OUTPUT\21-4012-01_2021-04-16_19-15-29-rect_img_ele.bsq
+U:\2021_Acquisitions\02_Processed\21_4012_03_Place_CryoMB\03_Hyper\02_Working\OUTPUT\21-4012-01_2021-04-16_19-15-29-rect_img_slp.bsq
+U:\2021_Acquisitions\02_Processed\21_4012_03_Place_CryoMB\03_Hyper\02_Working\OUTPUT\21-4012-01_2021-04-16_19-15-29-rect_img_asp.bsq
+U:\2021_Acquisitions\02_Processed\21_4012_03_Place_CryoMB\03_Hyper\02_Working\OUTPUT\21-4012-01_2021-04-16_19-15-29-rect_img_sky.bsq
+
+h04000_wv04_rura.atm
+
+ 0.600              Adjacency range [km]
+  50.0              Visibility [km]
+ 2.070              Mean ground elevation [km]
+ 40.1   161.1       Solar zenith, azimuth [degree]
+  4.000 167.638     Flight altit [km], heading[deg]
+   0   1   0   0   0   1   0     npref, iwaterwv, ihaze, iwat_shd, ksolflux, ishadow, icl_shadow
+   0   0.500   0.500             itriang, ratio_red_nir/swir, ratio_blue_red
+   21    40.0    0.200            ibrdf, beta_thr, thr_g
+   1   0.820   0.780   0.600     lai_model, a0_vi, a1_vi, a2_vi
+       0.900   0.950   0.380     FPAR model: C, A, B
+        20.0   0.830             t_air, emiss_air   (flat terrain)
+ 20.0  0.50 0.65 15.0  6.3       t_air, z0_ref, tgradient, p_wv, zh_pwv  (rugged terrain)
+   2   2                         ihot_mask, ihot_dynr
+  2 -999.00 -999.00   0.10   1   iclshad_mask, thr_shad, phi_unscl_max, phi_scl_min, istretch_type
+  121  122  130  131  139  140   bands for  940 nm water vapor retrieval
+    0    0    0    0    0    0   bands for 1130 nm water vapor retrieval
+    0    0    0    0             bands for thermal water vapor retrieval (night data)
+  0.990  0.980  0.975  0.965     e_water, e_veget, e_soil, e_sand (ANEM emissivities)
+     2              iwv_model (1=wv without regression, 2=regression with several bands)
+     0              icirrus 
+     1              irrad0  (1=solar flux at ground, 2=+surface reflected radiance)
